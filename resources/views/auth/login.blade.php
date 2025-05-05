@@ -28,9 +28,9 @@
                     <div class="d-table-cell align-middle">
 
                         <div class="text-center mt-4">
-                            <h1 class="h2">Welcome back!</h1>
+                            <h1 class="h2">Selamat datang kembali!</h1>
                             <p class="lead">
-                                Sign in to your account to continue
+                                Masuk ke akun Anda untuk melanjutkan
                             </p>
                         </div>
 
@@ -51,9 +51,9 @@
                                     <form action="{{ route('login.store') }}" method="POST">
                                         @csrf
                                         <div class="mb-3">
-                                            <label class="form-label">Username</label>
+                                            <label class="form-label">Nama Pengguna</label>
                                             <input class="form-control form-control-lg" type="text" name="username"
-                                                placeholder="Enter your username" />
+                                                placeholder="Masukkan nama pengguna Anda" />
                                         </div>
                                         {{-- <div class="mb-3">
                                             <label class="form-label">Email</label>
@@ -61,27 +61,27 @@
                                                 placeholder="Enter your email" />
                                         </div> --}}
                                         <div class="mb-3">
-                                            <label class="form-label">Password</label>
+                                            <label class="form-label">Kata Sandi</label>
                                             <input class="form-control form-control-lg" type="password" name="password"
-                                                placeholder="Enter your password" />
+                                                placeholder="Masukkan kata sandi Anda" />
                                         </div>
                                         <div>
                                             <div class="form-check align-items-center">
                                                 <input id="customControlInline" type="checkbox" class="form-check-input"
                                                     value="remember-me" name="remember-me" checked>
                                                 <label class="form-check-label text-small"
-                                                    for="customControlInline">Remember me</label>
+                                                    for="customControlInline">Ingat saya</label>
                                             </div>
                                         </div>
                                         <div class="d-grid gap-2 mt-3">
-                                            <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+                                            <button type="submit" class="btn btn-lg btn-primary">Masuk</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                         <div class="text-center mb-3">
-                            Don't have an account? <a href="{{ route('register') }}">Sign up</a>
+                            Belum punya akun? <a href="{{ route('register') }}">Daftar</a>
                         </div>
                     </div>
                 </div>

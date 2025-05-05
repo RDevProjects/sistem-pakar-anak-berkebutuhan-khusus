@@ -6,9 +6,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AuthAndRoleMiddleware;
 
-Route::middleware([AuthAndRoleMiddleware::class])->group(function () {
-    
-});
+Route::middleware([AuthAndRoleMiddleware::class])->group(function () {});
+
+Route::get('/', function () {
+    return redirect()->route('login.index');
+})->name('home');
 
 Route::prefix('/dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
