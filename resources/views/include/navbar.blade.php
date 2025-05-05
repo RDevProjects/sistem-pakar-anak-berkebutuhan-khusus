@@ -11,9 +11,9 @@
                 </a>
 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                    <img src="{{ asset(Auth::user()->photo_profile_path) ?? 'https://static-00.iconduck.com/assets.00/avatar-default-icon-1024x1024-dvpl2mz1.png' }}"
-                        class="avatar img-fluid rounded me-1" alt="Nama User" /> <span
-                        class="text-dark">{{ Auth::user()->name }}</span>
+                    <img src="{{ Auth::check() && Auth::user()->photo_profile_path ? asset(Auth::user()->photo_profile_path) : asset('avatar.png') }}"
+                        class="avatar img-fluid rounded me-1" alt="Nama User" />
+                    <span class="text-dark">{{ Auth::user()->name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="{{ route('dashboard.profile') }}"><i class="align-middle me-1"

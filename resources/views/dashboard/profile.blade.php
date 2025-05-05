@@ -17,14 +17,14 @@
                 <h5 class="card-title mb-0">Profile Details</h5>
             </div>
             <div class="card-body text-center">
-                <img src="{{ asset(Auth::user()->photo_profile_path) }}" alt="Christina Mason"
-                    class="img-fluid rounded-circle mb-2" width="128" height="128" />
+                <img src="{{ Auth::check() && Auth::user()->photo_profile_path ? asset(Auth::user()->photo_profile_path) : asset('avatar.png') }}"
+                    alt="Photo_Profile" class="img-fluid rounded-circle mb-2" width="128" height="128" />
                 <h5 class="card-title mb-0">{{ Auth::user()->name }}</h5>
                 <div class="text-muted mb-2">{{ Auth::user()->email }}</div>
 
                 <div>
-                    <a class="btn btn-primary btn-sm"
-                        href="">{{ Auth::user()->role == 'admin' ? 'Role : Admin' : 'Role : User' }}</a>
+                    <span
+                        class="badge bg-primary p-2">{{ Auth::user()->role == 'admin' ? 'Role : Admin' : 'Role : User' }}</span>
                 </div>
             </div>
         </div>
