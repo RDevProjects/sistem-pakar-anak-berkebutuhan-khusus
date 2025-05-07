@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GejalaController;
 use App\Http\Middleware\AuthAndRoleMiddleware;
 
 Route::middleware([AuthAndRoleMiddleware::class])->group(function () {});
@@ -24,6 +25,15 @@ Route::prefix('/dashboard')->group(function () {
         Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
         Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
         Route::delete('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    });
+
+    Route::prefix('/gejala')->group(function () {
+        Route::get('/', [GejalaController::class, 'index'])->name('gejala.index');
+        Route::post('/store', [GejalaController::class, 'store'])->name('gejala.store');
+        Route::get('/show/{id}', [GejalaController::class, 'show'])->name('gejala.show');
+        Route::get('/edit/{id}', [GejalaController::class, 'edit'])->name('gejala.edit');
+        Route::put('/update/{id}', [GejalaController::class, 'update'])->name('gejala.update');
+        Route::delete('/destroy/{id}', [GejalaController::class, 'destroy'])->name('gejala.destroy');
     });
 });
 

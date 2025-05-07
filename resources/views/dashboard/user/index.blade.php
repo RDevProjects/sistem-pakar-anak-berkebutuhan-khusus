@@ -175,7 +175,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this user?
+                    Apakah Anda yakin ingin menghapus user ini beserta relasinya?
                 </div>
                 <div class="modal-footer">
                     <form id="deleteUserForm" action="" method="POST">

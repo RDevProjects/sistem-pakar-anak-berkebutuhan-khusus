@@ -10,7 +10,8 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(){
+    public function index()
+    {
         $users = User::all();
         return view('dashboard.user.index', compact('users'));
     }
@@ -18,14 +19,16 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(){
+    public function create()
+    {
         // return view('dashboard.user.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
             'name' => 'required',
             'username' => 'required',
@@ -41,7 +44,8 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id){
+    public function show(string $id)
+    {
         $user = User::findOrFail($id);
         return response()->json($user);
     }
@@ -49,14 +53,16 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id){
+    public function edit(string $id)
+    {
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id){
+    public function update(Request $request, string $id)
+    {
         $request->validate([
             'name' => 'required',
             'username' => 'required',
@@ -65,13 +71,12 @@ class UserController extends Controller
             'role' => 'required',
             'photo_profile' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-        // dd($request->all());
         try {
             $user = User::findOrFail($id);
             $user->name = $request->name;
             $user->username = $request->username;
             $user->email = $request->email;
-            if($request->filled('password')){
+            if ($request->filled('password')) {
                 $user->password = bcrypt($request->password);
             }
             $user->role = $request->role;
@@ -98,7 +103,8 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id){
+    public function destroy(string $id)
+    {
         try {
             $user = User::findOrFail($id);
             if ($user->photo_profile_path) {
