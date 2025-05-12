@@ -13,26 +13,24 @@ class AuthAndRoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        // Cek apakah pengguna sudah login
-        if (!Auth::check()) {
-            // Jika tidak login, arahkan ke halaman login
-            return redirect()->route('/');
+        // Cek apakah user sudah login
+        if (!$request->user()) {
+            return redirect()->route('login.index')->with('error', 'Anda harus login terlebih dahulu');
         }
 
-        // Cek apakah role pengguna cocok
-        $user = Auth::user();
-        if ($user->role !== $role) {
-            // Jika role tidak cocok, arahkan ke halaman yang sesuai
-            if ($role === 'admin') {
-                return redirect()->route('home');  // Misalnya ke halaman utama untuk user
-            } else {
-                return redirect()->route('home');  // Bisa menyesuaikan sesuai kebutuhan
-            }
+        // Jika tidak ada parameter role, cukup cek auth saja
+        if (empty($roles)) {
+            return $next($request);
         }
 
-        // Lanjutkan ke proses berikutnya
+        // Cek role user
+        $user = $request->user();
+        if (!in_array($user->role, $roles)) {
+            abort(403, 'Unauthorized action.');
+        }
+
         return $next($request);
     }
 }

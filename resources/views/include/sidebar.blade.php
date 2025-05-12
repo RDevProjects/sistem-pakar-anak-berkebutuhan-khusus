@@ -28,8 +28,8 @@
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-sign-up.html">
+            <li class="sidebar-item {{ Request::routeIs('penyakit.index') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('penyakit.index') }}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Data
                         Penyakit</span>
                 </a>
